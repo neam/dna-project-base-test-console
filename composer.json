@@ -14,7 +14,7 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "neam/yii-dna-pre-release-testing": "dev-develop@dev",
+        "neam/dna-project-base-data-set-management": "dev-develop@dev",
         "neam/php-app-config": "dev-develop"
     },
     "require-dev": {
