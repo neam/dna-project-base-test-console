@@ -61,6 +61,10 @@ function codecept () {
 }
 export -f codecept
 # helper functions
+function test_console () {
+    $PROJECT_BASEPATH/vendor/bin/yii-dna-pre-release-testing-console $@
+}
+export -f test_console
 function stop_api_mock_server () {
     pid=$(ps aux | grep node/bin/api-mock | grep -v grep | head -n 1 | awk '{ print $2 }')
     if [ "$pid" != "" ]; then
