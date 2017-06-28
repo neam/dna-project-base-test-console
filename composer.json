@@ -12,6 +12,7 @@
             "homepage": "http://www.neam.se"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "php": ">=5.4.0",
         "neam/dna-project-base-data-set-management": "dev-develop@dev",
