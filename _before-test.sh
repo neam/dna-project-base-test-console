@@ -16,7 +16,7 @@ else
 fi
 
 export TESTS_BASEPATH=$(pwd)
-export TESTS_FRAMEWORK_BASEPATH=$PROJECT_BASEPATH/vendor/neam/yii-dna-test-framework
+export TESTS_FRAMEWORK_BASEPATH=$PROJECT_BASEPATH/vendor/neam/dna-project-base-testing-setup
 export TESTS_BASEPATH_REL=$(python -c "import os.path; print os.path.relpath('$TESTS_BASEPATH', '$TESTS_FRAMEWORK_BASEPATH')")
 
 # defaults
