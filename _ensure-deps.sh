@@ -7,12 +7,22 @@ echo "Note: When sourcing this script, you must reside within the tests folder o
 echo "Assuming running sourced"
 script_path=$(pwd)
 
-if [ "$(cd $script_path/..;basename $(pwd))" == "dna" ]; then
-    # assume we are testing the dna
+# find the project basepath by looking for the .env file
+if [ -f $(pwd)/../.env ]; then
+    export PROJECT_BASEPATH=$(pwd)/..
+fi
+if [ -f $(pwd)/../../.env ]; then
     export PROJECT_BASEPATH=$(pwd)/../..
-else
-    # assume we are testing a yiiapp under yiiapps/
+fi
+if [ -f $(pwd)/../../../.env ]; then
     export PROJECT_BASEPATH=$(pwd)/../../..
+fi
+if [ -f $(pwd)/../../../../.env ]; then
+    export PROJECT_BASEPATH=$(pwd)/../../../..
+fi
+if [ "$PROJECT_BASEPATH" == "" ]; then
+  echo "Project base path not found - no .env file in the closes parent directories"
+  exit 1
 fi
 
 export TESTS_BASEPATH=$(pwd)
