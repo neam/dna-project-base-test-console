@@ -56,6 +56,10 @@ XDEBUG_PROFILING_PREFIX=""
 
 # function codecept for easy access to codecept binary running with proper config
 function codecept () {
+    if [[ "$DATA" != test-* ]]; then
+      echo "* Prefixing the current data profile with test-, so that there is less risk that tests run against live data";
+      export DATA=test-$DATA
+    fi
     echo time $XDEBUG_PROFILING_PREFIX $TESTS_FRAMEWORK_BASEPATH/vendor/bin/codecept $@;
     time $XDEBUG_PROFILING_PREFIX $TESTS_FRAMEWORK_BASEPATH/vendor/bin/codecept $@
 }
