@@ -1,0 +1,45 @@
+paths:
+    tests: ./codeception
+    log: ./codeception/_log
+    data: ./codeception/_data
+    helpers: ./codeception/_helpers
+settings:
+    bootstrap: _bootstrap.php
+    suite_class: \PHPUnit_Framework_TestSuite
+    colors: true
+    memory_limit: 1024M
+    log: true
+coverage:
+    enabled: true
+    whitelist:
+        include:
+            - ../components/*
+            - ../exceptions/*
+            - ../generated-classes/*
+            - ../models/*
+            - ../product-specific-dna/*
+            - ../traits/*
+        exclude:
+            - ../tests/*
+            - ../generated-classes/propel/models/Base/*
+            - ../generated-classes/propel/models/Map/*
+            - ../models/base/*
+            - ../models/metadata/*
+params:
+    - env # load params from environment vars
+modules:
+    config:
+        MailCatcher:
+            url: http://%MAILCATCHER_HOST%
+            port: %MAILCATCHER_SMTP_PORT%
+<% if ENV.has_key? "SAUCELABS" and ENV['SAUCELABS'].to_s == "1" %>
+extensions:
+    enabled:
+        - Codeception\Extension\SauceExtension
+    config:
+        Codeception\Extension\SauceExtension:
+            username: %SAUCE_USERNAME%
+            accesskey: %SAUCE_ACCESS_KEY%
+            build: %SAUCE_METADATA_BUILD%
+            tags: %SAUCE_METADATA_TAGS%
+<% end %>
