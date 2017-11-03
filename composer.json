@@ -22,6 +22,7 @@
         "captbaritone/mailcatcher-codeception-module": "dev-master",
         "neam/codeception-saucelabs-metadata": "dev-develop",
         "phpunit/php-code-coverage": "^4",
-        "codeception/codeception": "=2.2.2"
+        "phpunit/php-file-iterator": "^1.3@dev",
+        "codeception/codeception": "=2.3.6"
     }
 }
